@@ -1,0 +1,19 @@
+tabla de complejidad
+#claisficar la complejidad de todos los algoritmos
+# de ordenamiento vistos en clase
+
+
+# ORDENAMIENTOS VISTOS EN CLASE 
+#bubble sort: O(n^2) ya que compara cada elemento con todos los demás en el peor caso
+#insertion sort: O(n^2) ya que en el peor caso cada elemento se compara con todos los anteriores
+#selection sort: O(n^2) ya que busca el mínimo en cada iteración y lo intercambia
+#merge sort: O(n log n) ya que divide la lista en mitades y luego las combina
+#quick sort: O(n^2) peor caso, O(n log n) caso promedio, depende de la elección del pivote
+#engañoso: O(n) ya que recorre la lista y realiza un número constante de operaciones por cada elemento
+
+#COMPLEJIDAD DE LAS FUNCIONES DEFINIDAS
+#primero: O(1) ya que devuelve el primer elemento sin importar el tamaño de la lista
+#sumar: O(n) ya que recorre todos los elementos de la lista
+#pares: O(n^2) ya que compara cada elemento con todos los demás y cuenta los pares de numeros en un array
+#mitad: O(log n) ya que reduce el rango de búsqueda a la mitad en cada iteración
+#engañoso: O(n*5) -> O(n) ya que recorre la lista y realiza 5 operaciones por cada elemento
