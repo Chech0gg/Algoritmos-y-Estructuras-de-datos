@@ -3,12 +3,16 @@ class TablaHash:
         self.cap = capacidad
         self.cubetas = [[] for _ in range(self.cap)]
         self.n=0
+    def factor_carga(self):
+        return self.n / self.cap
     def _hash(self, clave):
         h = 0
         for c in str(clave):
             h = (h * 31 + ord(c)) % self.cap
         return h
     def insertar(self, clave, valor):
+        if self.factor_carga() > 0.75:
+            self._redimensionar()
         i = self._hash(clave)
         for par in self.cubetas[i]:
             if par[0] == clave:
@@ -30,6 +34,15 @@ class TablaHash:
                 self.n -= 1
                 return True
         return False
+    def _redimensionar(self):
+        print("Redimensionando...")  # Para ver cuándo se redimensiona
+        viejas = self.cubetas
+        self.cap *= 2
+        self.cubetas = [[] for _ in range(self.cap)]
+        self.n = 0
+        for cubeta in viejas:
+            for clave, valor in cubeta:
+                self.insertar(clave, valor)
 
 v = {
     "EST-2026-0101": "Ana Torres",
@@ -50,3 +63,8 @@ for clave,valor in v.items():
     tabla.insertar(clave, valor)
 print("''''''''Buscar EST-2026-0107''''''''''''''")
 print(tabla.buscar("EST-2026-0107"))
+
+print("''''''''Eliminar EST-2026-0107''''''''''''''")
+tabla.eliminar("EST-2026-0107")
+print(tabla.buscar("EST-2026-0107"))
+print(tabla._redimensionar())
